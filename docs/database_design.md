@@ -14,20 +14,20 @@
 - Transactions
 
 ## Tables
-> Users
-> Games
-> Developers
-> Publishers
-> Orders
-> Order_Items
-> Reviews
-> Friends
-> Messages
-> Wishlist
-> User_Library
-> Achievements
-> User_Achievements
-> Coin_Transactions
+- Users
+- Games
+- Developers
+- Publishers
+- Orders
+- Order_Items
+- Reviews
+- Friends
+- Messages
+- Wishlist
+- User_Library
+- Achievements
+- User_Achievements
+- Coin_Transactions
 
 ### Relationships
 - Users → Orders (1:M)
