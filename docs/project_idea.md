@@ -9,7 +9,7 @@ Game verse is a digital universe for gamers where users can purchase, play, revi
 - Game Library
 - Reviews and Ratings
 - Friends & Chat System
-- Discussion Portal
+- Discussion Rooms
 - Wishlist
 - Achievements
 - Coin System
