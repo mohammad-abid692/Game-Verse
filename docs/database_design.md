@@ -45,3 +45,21 @@
 - Users → User_Achievements (1:M)
 - Developers → Games (1:M)
 - Publishers → Games (1:M)
+
+## SQL File Structure
+
+tables.sql
+- Contains table definitions and relationships.
+
+data.sql
+- Contains sample data used for testing and analysis.
+
+queries.sql
+- Contains business, analytical, and reporting queries.
+
+## Workflow
+
+1. Design tables in tables.sql
+2. Populate tables using data.sql
+3. Test and analyze data using queries.sql
+4. Visualize results in Power BI
