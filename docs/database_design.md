@@ -43,7 +43,7 @@
     - total_amount
 - Order_Items
     - order_item_id
-    - user_id
+    - order_id
     - game_id
     - price
 - Reviews

@@ -1,4 +1,4 @@
--- Foundation Tabels
+-- Foundation Tables
 
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
@@ -22,14 +22,46 @@ CREATE TABLE games (
         REFERENCES publishers(publisher_id) 
 );
 
-CREATE TABLE developers(
+CREATE TABLE developers (
     developer_id SERIAL PRIMARY KEY,
     developer_name VARCHAR(200) NOT NULL,
     country VARCHAR(80) NOT NULL
 );
 
-CREATE TABLE publishers(
+CREATE TABLE publishers (
     publisher_id SERIAL PRIMARY KEY,
     publisher_name VARCHAR(200) NOT NULL,
     country VARCHAR(80) NOT NULL
+);
+
+-- Commerce Tables
+
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
+    order_date DATE DEFAULT CURRENT_DATE,
+    total_amount DECIMAL(6,2) NOT NULL
+);
+
+CREATE TABLE order_items (
+    order_item_id SERIAL PRIMARY KEY,
+    order_id INTEGER NOT NULL REFERENCES orders(order_id),
+    game_id INTEGER NOT NULL REFERENCES games(game_id),
+    price DECIMAL(6,2) NOT NULL
+);
+
+CREATE TABLE wishlist (
+    wishlist_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
+    game_id INTEGER NOT NULL REFERENCES games(game_id),
+    added_date DATE DEFAULT CURRENT_DATE,
+    UNIQUE(user_id, game_id)
+);
+
+CREATE TABLE user_library (
+    library_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
+    game_id INTEGER NOT NULL REFERENCES games(game_id),
+    purchase_date DATE DEFAULT CURRENT_DATE,
+    UNIQUE(user_id, game_id)
 );
