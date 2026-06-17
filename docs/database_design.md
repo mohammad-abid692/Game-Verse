@@ -77,6 +77,7 @@
 - Achievements
     - achievement_id
     - achievement_title
+    - achievement_description
     - achievement_condition
     - coin_reward
 - User_Achievements

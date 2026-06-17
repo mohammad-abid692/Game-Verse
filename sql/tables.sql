@@ -93,3 +93,30 @@ CREATE TABLE messages (
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     read_status BOOLEAN DEFAULT FALSE
 );
+
+-- Gamification Tables
+
+CREATE TABLE achievements (
+    achievement_id SERIAL PRIMARY KEY,
+    achievement_title VARCHAR(300) NOT NULL UNIQUE,
+    achievement_description VARCHAR(800) NOT NULL UNIQUE,
+    achievement_condition VARCHAR(500) NOT NULL UNIQUE,
+    coin_reward INTEGER NOT NULL
+);
+
+CREATE TABLE user_achievements (
+    user_achievement_id SERIAL PRIMARY KEY,
+    achievement_id INTEGER NOT NULL REFERENCES achievements(achievement_id),
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
+    earned_date DATE DEFAULT CURRENT_DATE,
+    completed BOOLEAN DEFAULT FALSE,
+    UNIQUE (user_id, achievement_id)
+);
+
+CREATE TABLE coin_transactions (
+    transaction_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
+    coins INTEGER NOT NULL CHECK (coins <> 0),
+    source VARCHAR(200) NOT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+);
