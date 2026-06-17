@@ -65,3 +65,31 @@ CREATE TABLE user_library (
     purchase_date DATE DEFAULT CURRENT_DATE,
     UNIQUE(user_id, game_id)
 );
+
+-- Community Tables
+
+CREATE TABLE reviews (
+    review_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
+    game_id INTEGER NOT NULL REFERENCES games(game_id),
+    rating DECIMAL(3,1) NOT NULL CHECK (rating BETWEEN 0.0 AND 10.0),
+    comment VARCHAR(800),
+    review_date DATE DEFAULT CURRENT_DATE,
+    UNIQUE (user_id, game_id)
+);
+
+CREATE TABLE friends (
+    friendship_id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
+    friend_id INTEGER NOT NULL REFERENCES users(user_id),
+    UNIQUE(user_id, friend_id) 
+);
+
+CREATE TABLE messages (
+    message_id SERIAL PRIMARY KEY,
+    sender_id INTEGER NOT NULL REFERENCES users(user_id),
+    receiver_id INTEGER NOT NULL REFERENCES users(user_id),
+    msg_txt VARCHAR(800) NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    read_status BOOLEAN DEFAULT FALSE
+);

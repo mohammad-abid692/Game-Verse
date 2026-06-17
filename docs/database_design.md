@@ -58,6 +58,7 @@
     - user_id
     - friend_id
 - Messages
+    - message_id
     - sender_id
     - receiver_id
     - msg_txt
