@@ -64,7 +64,6 @@
     - msg_txt
     - sent_at
     - read_status
-    - msg_history
 - Wishlist
     - wishlist_id
     - user_id
