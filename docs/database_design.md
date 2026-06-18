@@ -21,13 +21,6 @@
     - password
     - join_date
     - coin_balance
-- Games
-    - game_id
-    - title
-    - price
-    - release_date
-    - developer_id
-    - publisher_id
 - Developers
     - developer_id
     - developer_name
@@ -36,6 +29,13 @@
     - publisher_id
     - publisher_name
     - country
+- Games
+    - game_id
+    - title
+    - price
+    - release_date
+    - developer_id
+    - publisher_id
 - Orders
     - order_id
     - user_id

@@ -9,6 +9,18 @@ CREATE TABLE users (
     coin_balance INTEGER NOT NULL DEFAULT 0
 );
 
+CREATE TABLE developers (
+    developer_id SERIAL PRIMARY KEY,
+    developer_name VARCHAR(200) NOT NULL,
+    country VARCHAR(80) NOT NULL
+);
+
+CREATE TABLE publishers (
+    publisher_id SERIAL PRIMARY KEY,
+    publisher_name VARCHAR(200) NOT NULL,
+    country VARCHAR(80) NOT NULL
+);
+
 CREATE TABLE games (
     game_id SERIAL PRIMARY KEY,
     title VARCHAR(200) NOT NULL UNIQUE,
@@ -20,18 +32,6 @@ CREATE TABLE games (
         REFERENCES developers(developer_id),
     FOREIGN KEY(publisher_id)
         REFERENCES publishers(publisher_id) 
-);
-
-CREATE TABLE developers (
-    developer_id SERIAL PRIMARY KEY,
-    developer_name VARCHAR(200) NOT NULL,
-    country VARCHAR(80) NOT NULL
-);
-
-CREATE TABLE publishers (
-    publisher_id SERIAL PRIMARY KEY,
-    publisher_name VARCHAR(200) NOT NULL,
-    country VARCHAR(80) NOT NULL
 );
 
 -- Commerce Tables
