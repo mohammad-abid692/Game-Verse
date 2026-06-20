@@ -514,3 +514,15 @@ VALUES (1, 1, 29.99),
     (78, 17, 69.99),
     (78, 1, 29.99),
     (78, 30, 29.99);
+
+INSERT INTO user_library (
+    user_id, game_id, purchase_date
+)
+SELECT 
+    orders.user_id,
+    order_items.game_id,
+    MIN(orders.order_date)
+FROM orders
+JOIN order_items
+    ON orders.order_id = order_items.order_id
+GROUP BY orders.user_id, order_items.game_id;
