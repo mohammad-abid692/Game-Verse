@@ -799,3 +799,25 @@ VALUES
     (24,26),
     (25,27),
     (26,28);
+
+INSERT INTO messages (
+    sender_id, receiver_id, msg_txt, sent_at, read_status
+)
+SELECT 
+    f.user_id,
+    f.friend_id,
+    'Wanna Play?',
+    '2025-01-01',
+    TRUE
+FROM friends f;
+
+INSERT INTO messages (
+    sender_id, receiver_id, msg_txt, sent_at, read_status
+)
+SELECT 
+    f.friend_id,
+    f.user_id,
+    'Sure, I will join.',
+    '2025-01-02',
+    TRUE
+FROM friends f;
