@@ -85,6 +85,7 @@
     - achievement_id
     - user_id
     - earned_date
+    - completed
 - Coin_Transactions
     - transaction_id
     - user_id
