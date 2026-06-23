@@ -30,3 +30,26 @@ FROM games g
 JOIN developers dev
 ON g.developer_id = dev.developer_id
 WHERE developer_name = 'Capcom Dev 1';
+
+--6. Show users who have a coin balance above the average balance.
+SELECT user_id, username, coin_balance
+FROM users
+WHERE coin_balance > 994;
+
+--7. The five games that have the lowest single review score.
+SELECT title, MIN(rating) AS rating
+FROM reviews r
+JOIN games g
+ON r.game_id = g.game_id
+GROUP BY title
+ORDER BY rating
+LIMIT 5;
+
+--8. Display users with lowest amount spent on games.
+SELECT u.username, SUM(total_amount) AS total_spent
+FROM orders o
+JOIN users u
+ON o.user_id = u.user_id
+GROUP BY username
+ORDER BY total_spent ASC
+LIMIT 10;
