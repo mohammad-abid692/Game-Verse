@@ -53,3 +53,12 @@ ON o.user_id = u.user_id
 GROUP BY username
 ORDER BY total_spent ASC
 LIMIT 10;
+
+--Intermediate Queries
+--9. Display the total number of games owned by each user.
+SELECT o.user_id, COUNT(oi.game_id) AS No_of_Games
+FROM orders o
+JOIN order_items oi
+ON o.order_id = oi.order_id
+GROUP BY user_id
+ORDER BY user_id;
