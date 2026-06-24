@@ -719,7 +719,8 @@ VALUES (1, 27, 8.6, 'Excellent gameplay but I wish there were more DLC expansion
     (28, 23, 7.8, 'Fun gameplay but not something I will revisit often.', '2022-05-22'),
     (33, 17, 9.0, 'Excellent design and rewarding gameplay.', '2024-02-28'),
     (37, 30, 8.5, 'Very enjoyable with great replay value.', '2024-11-11'),
-    (45, 17, 9.2, 'One of the best gaming experiences I have had.', '2025-04-10');
+    (45, 17, 9.2, 'One of the best gaming experiences I have had.', '2025-04-10'),
+    (13, 14, 8.5, 'Great gameplay and raids, but it can become repetitive after long sessions.', '2025-03-14');
 
 INSERT INTO friends (
     user_id, friend_id

@@ -62,3 +62,35 @@ JOIN order_items oi
 ON o.order_id = oi.order_id
 GROUP BY user_id
 ORDER BY user_id;
+
+--10. Find the top 10 users with the largest game libraries.
+SELECT o.user_id, COUNT(oi.game_id) AS No_of_Games
+FROM orders o
+JOIN order_items oi
+ON o.order_id = oi.order_id
+GROUP BY user_id
+ORDER BY No_of_Games DESC
+LIMIT 10;
+
+--11. Show the total amount spent by every user.
+SELECT user_id, SUM(total_amount) AS total_spent
+FROM orders
+GROUP BY user_id
+ORDER BY user_id ASC;
+
+--12. Find the highest spending users.
+SELECT u.user_id, u.username, SUM(total_amount) AS Highest_Spent
+FROM orders o
+JOIN users u
+ON o.user_id = u.user_id
+GROUP BY u.user_id
+ORDER BY SUM(total_amount) DESC
+LIMIT 5;
+
+--13. Calculate the average rating of each game.
+SELECT g.game_id, title, ROUND(AVG(r.rating),2) AS avg_rating
+FROM games g
+JOIN reviews r
+ON g.game_id = r.game_id
+GROUP BY g.game_id
+ORDER BY g.game_id;
