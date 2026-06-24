@@ -143,3 +143,6 @@ SELECT user_id, username, coin_balance AS current_balance
 FROM users
 ORDER BY coin_balance DESC
 LIMIT 5;
+
+--Advanced Queries
+--21. Find games that have many wishlists but low sales.
