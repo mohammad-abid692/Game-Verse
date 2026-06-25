@@ -184,7 +184,7 @@ FROM (
 	FROM reviews
 	GROUP BY game_id
 ) AS r
-WHERE ratings < (
+WHERE ratings > (
 	SELECT AVG(c.avg_ratings)
 	FROM (
 		SELECT game_id, ROUND(AVG(rating),1) AS avg_ratings
