@@ -146,3 +146,13 @@ LIMIT 5;
 
 --Advanced Queries
 --21. Find games that have many wishlists but low sales.
+SELECT w.game_id, wishlist_count, no_of_sale
+FROM (SELECT game_id, COUNT(game_id) AS wishlist_count
+		FROM wishlist
+		GROUP BY game_id) AS w
+JOIN (SELECT game_id, COUNT(order_id) AS no_of_sale
+		FROM order_items
+		GROUP BY game_id
+		ORDER BY game_id) AS s
+ON w.game_id = s.game_id
+WHERE wishlist_count > no_of_sale;
