@@ -147,12 +147,48 @@ LIMIT 5;
 --Advanced Queries
 --21. Find games that have many wishlists but low sales.
 SELECT w.game_id, wishlist_count, no_of_sale
-FROM (SELECT game_id, COUNT(game_id) AS wishlist_count
+FROM (
+	SELECT game_id, COUNT(game_id) AS wishlist_count
 		FROM wishlist
-		GROUP BY game_id) AS w
-JOIN (SELECT game_id, COUNT(order_id) AS no_of_sale
+		GROUP BY game_id
+) AS w
+JOIN (
+	SELECT game_id, COUNT(order_id) AS no_of_sale
 		FROM order_items
 		GROUP BY game_id
-		ORDER BY game_id) AS s
+		ORDER BY game_id
+) AS s
 ON w.game_id = s.game_id
 WHERE wishlist_count > no_of_sale;
+
+--22. Show users whose game library size is above the average user.
+SELECT user_id, games_owned
+FROM (
+    SELECT user_id, COUNT(game_id) AS games_owned
+    FROM user_library
+    GROUP BY user_id
+) AS c
+WHERE games_owned > (
+    SELECT AVG(games_owned)
+    FROM (
+        SELECT user_id, COUNT(game_id) AS games_owned
+        FROM user_library
+        GROUP BY user_id
+    ) AS avg_table
+);
+
+--23. Find games with ratings higher than the platform-wide average.
+SELECT game_id, ratings
+FROM (
+	SELECT game_id, ROUND(AVG(rating),1) AS ratings
+	FROM reviews
+	GROUP BY game_id
+) AS r
+WHERE ratings < (
+	SELECT AVG(c.avg_ratings)
+	FROM (
+		SELECT game_id, ROUND(AVG(rating),1) AS avg_ratings
+		FROM reviews
+		GROUP BY game_id
+	) AS c
+);
