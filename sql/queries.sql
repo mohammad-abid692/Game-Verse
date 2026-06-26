@@ -223,3 +223,12 @@ JOIN games g
 ON p.publisher_id = g.publisher_id
 GROUP BY p.publisher_id, p.publisher_name
 HAVING COUNT(game_id) > 2;
+
+--27. Rank users into Bronze, Silver, and Gold categories based on their current coin balance.
+SELECT user_id, username,
+CASE 
+	WHEN coin_balance < 500 THEN 'Bronze'
+	WHEN coin_balance >= 500 AND coin_balance <= 1000 THEN 'Silver'
+	ELSE 'Gold'
+END AS user_rank
+FROM users;
