@@ -232,3 +232,8 @@ CASE
 	ELSE 'Gold'
 END AS user_rank
 FROM users;
+
+--28. Demonstrate the use of NULLIF to prevent division-by-zero errors.
+SELECT
+SUM(coin_balance)/NULLIF(0,0) AS division
+FROM users;
