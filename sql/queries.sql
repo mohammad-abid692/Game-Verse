@@ -192,3 +192,26 @@ WHERE ratings > (
 		GROUP BY game_id
 	) AS c
 );
+
+--24. Find users who purchased games from the highest number of developers.
+SELECT ul.user_id, COUNT(DISTINCT g.developer_id) AS no_of_developers
+FROM user_library ul
+JOIN games g
+ON ul.game_id = g.game_id
+GROUP BY ul.user_id
+ORDER BY no_of_developers DESC
+LIMIT 5;
+
+--25. Show games purchased by a user's friends.
+SELECT friend_id AS friend, game_id
+FROM user_library ul
+JOIN friends f
+ON ul.user_id = f.friend_id
+WHERE NOT EXISTS (
+	SELECT 1
+	FROM user_library ul2
+	WHERE ul2.user_id = f.user_id
+		AND ul2.game_id = ul.game_id
+)
+GROUP BY friend, game_id
+ORDER BY friend;
