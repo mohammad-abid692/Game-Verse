@@ -215,3 +215,11 @@ WHERE NOT EXISTS (
 )
 GROUP BY friend, game_id
 ORDER BY friend;
+
+--26. Find publishers who have published more than two games.
+SELECT p.publisher_id, p.publisher_name
+FROM publishers p
+JOIN games g
+ON p.publisher_id = g.publisher_id
+GROUP BY p.publisher_id, p.publisher_name
+HAVING COUNT(game_id) > 2;
