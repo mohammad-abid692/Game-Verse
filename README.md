@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="banner.png" alt="Game Verse Banner" width="100%">
+</p>
 # Game Verse
 
 Game Verse is a relational database project that simulates a digital game distribution platform. The database is designed to manage users, games, purchases, reviews, friendships, achievements, wishlists, messaging, and virtual coin transactions within a single system.
