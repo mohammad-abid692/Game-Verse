@@ -246,3 +246,8 @@ JOIN orders o
 ON oi.order_id = o.order_id
 GROUP BY o.user_id
 ORDER BY o.user_id;
+
+--30. Demonstrate the use of the TRUNCATE command to remove all records from a table while preserving its structure.
+TRUNCATE TABLE wishlist;
+--If the table contains foreign keys then:
+TRUNCATE TABLE wishlist RESTART IDENTITY CASCADE;
