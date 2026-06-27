@@ -237,3 +237,12 @@ FROM users;
 SELECT
 SUM(coin_balance)/NULLIF(0,0) AS division
 FROM users;
+
+--29. Create a view that displays each user's total spending and total games owned.
+CREATE VIEW user_spendingandgames AS
+SELECT o.user_id, COUNT(oi.game_id) AS no_of_games, SUM(oi.price) AS total_spending
+FROM order_items oi
+JOIN orders o
+ON oi.order_id = o.order_id
+GROUP BY o.user_id
+ORDER BY o.user_id;
