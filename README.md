@@ -70,6 +70,10 @@ To recreate the project:
 3. Run **queries.sql** to explore the SQL examples.
 4. Open the Power BI dashboard to interact with the visual reports.
 
+## Dashboard Preview
+
+![Game Verse Dashboard](dashboard.png)
+
 ## About This Project
 
 This project was built as a personal portfolio project to strengthen practical database skills and demonstrate SQL proficiency through a realistic application rather than isolated practice exercises.
