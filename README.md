@@ -72,7 +72,7 @@ To recreate the project:
 
 ## Dashboard Preview
 
-![Game Verse Dashboard](dashboard.png)
+![Game Verse Dashboard](Dashboard.png)
 
 ## About This Project
 
